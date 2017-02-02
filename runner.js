@@ -2,6 +2,7 @@
 
 import JSRacer from "./js_racer"
 
+
 function sleep(milliseconds) {
   var start = new Date().getTime();
   for (var i = 0; i < 1e7; i++) {
@@ -12,3 +13,5 @@ function sleep(milliseconds) {
 }
 
 // Your code here...
+const balapan = new JSRacer(3, 100)
+balapan.run(sleep)
