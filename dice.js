@@ -4,7 +4,7 @@ class Dice {
   constructor() {
     this.kocok = 0
   }
-  roll() {
+  static roll() {
     var kocok = Math.floor((Math.random() * 6) + 1);
     return kocok
   }
