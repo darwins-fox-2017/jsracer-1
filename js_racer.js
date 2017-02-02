@@ -51,7 +51,13 @@ class JSRacer {
     if (!this.isFinished()) {
       for (let i = 0; i < this.position.length; i++) {
         // let dice = new Dice()
-        this.position[i].pos += Dice.roll(6)
+        if (this.position[i].pos >= 30) {
+          this.gameOver = 1
+          console.log('The winner is : ' + this.winner());
+        } else {
+          this.position[i].pos += Dice.roll(6)
+        }
+
       }
     } else {
       this.gameOver = 1
