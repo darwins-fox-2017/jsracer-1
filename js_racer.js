@@ -3,25 +3,72 @@
 import Dice from "./dice.js"
 
 class JSRacer {
-  constructor(players, length, sides) {
-
+  constructor(players, len) {
+    this.len=len;
+    this.players=this.generatePlayers(players)
+    this.winner = null
   }
-  print_board() {
 
+  generatePlayers(sum){
+    let players = []
+    let playerName = ['a','b','c','d','e','f'];
+    if (sum>6){
+      sum=6;
+    }
+    for(let i = 0; i < sum; i++){
+      players.push({name:playerName[i],pos:0})
+    }
+    return players
   }
-  print_line(player, pos) {
 
+  startGame(timer) {
+    this.resetBoard();
+    this.printBoard(true);
+    timer(2000)
+    do {
+      this.resetBoard();
+      this.printBoard(false);
+      timer(2000);
+    } while (this.winner==null);
+    this.finished()
   }
-  advanced_player(player) {
 
+  printBoard(first){
+    if(first){
+      for (let i = 0; i < this.players.length; i++) {
+        this.printLine(this.players[i]);
+      }
+    }else{
+      for (let i = 0; i < this.players.length; i++) {
+        if(this.winner == null){
+          this.players[i].pos += Dice.roll();
+        }
+        if (this.players[i].pos>=this.len-1) {
+          this.players[i].pos=this.len-1;
+          this.winner=this.players[i];
+        }
+        this.printLine(this.players[i]);
+      }
+    }
   }
-  finished() {
 
+  printLine(player) {
+    let track = '';
+    for (let i = 0; i < this.len; i++) {
+      if (i == player.pos) {
+        track += `${player.name}|`;
+      }else{
+        track += ' |';
+      }
+    }
+    console.log(track);
   }
-  winner() {
 
+  finished(){
+    console.log(`the winner is ${this.winner.name}`);
   }
-  reset_board() {
+
+  resetBoard() {
     console.log("\x1B[2J")
   }
 }

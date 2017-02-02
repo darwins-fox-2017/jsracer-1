@@ -12,3 +12,6 @@ function sleep(milliseconds) {
 }
 
 // Your code here...
+
+let race=new JSRacer(3,15);
+race.startGame(sleep);
