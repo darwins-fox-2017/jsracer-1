@@ -11,4 +11,6 @@ function sleep(milliseconds) {
   }
 }
 
-// Your code here...
+var coba = new JSRacer(5,30,6)
+
+coba.advanced_player(sleep)
