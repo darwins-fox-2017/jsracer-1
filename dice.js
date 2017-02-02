@@ -2,10 +2,10 @@
 
 class Dice {
   constructor() {
-    this.chance = 6
+    // this.chance = 6
   }
-  roll() {
-    return Math.floor(Math.random() * this.chance)
+  static roll(chance) {
+    return Math.floor(Math.random() * chance)
   }
 }
 // for testing purpose

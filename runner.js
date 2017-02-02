@@ -2,7 +2,7 @@
 
 import JSRacer from "./js_racer"
 
-let race = new JSRacer(['A', 'B'], 20, 1)
+let race = new JSRacer(['A', 'B', 'C'], 20, 1)
 
 console.log('ayo main');
 race.play()

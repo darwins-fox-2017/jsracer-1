@@ -50,8 +50,8 @@ class JSRacer {
   next(){
     if (!this.isFinished()) {
       for (let i = 0; i < this.position.length; i++) {
-        let dice = new Dice()
-        this.position[i].pos += dice.roll()
+        // let dice = new Dice()
+        this.position[i].pos += Dice.roll(6)
       }
     } else {
       this.gameOver = 1
