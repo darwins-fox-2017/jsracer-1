@@ -74,6 +74,15 @@ class JSRacer {
       console.log(jalur)
     }
   }
+  run(timer) {
+    this.start_game()
+    do {
+      this.reset_board()
+      this.print_line()
+      timer(500)
+    } while (this.win !== true)
+    this.winner()
+  }
   finished() {
 
   }
