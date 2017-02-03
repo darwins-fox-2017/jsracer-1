@@ -1,12 +1,10 @@
 "use strict"
 
-class Dice {
+export default class Dice {
   constructor() {
-
   }
-  roll() {
-    
+
+  static roll() {
+    return Math.floor(Math.random()*6)
   }
 }
-
-export default Dice
