@@ -30,8 +30,9 @@ class JSRacer {
     // Next please
     do {
       this.next()
+      debugger
       console.log('--------------------------------------------------------------');
-      this.print_board()
+      this.isFinished() ? console.log(' Game is Over ') : this.print_board()
     } while (this.isFinished() == false);
   }
 
@@ -51,46 +52,43 @@ class JSRacer {
     if (!this.isFinished()) {
       for (let i = 0; i < this.position.length; i++) {
         // let dice = new Dice()
-        if (this.position[i].pos >= 30) {
+        if (this.position[i].pos > 30) {
+
           this.gameOver = 1
-          console.log('The winner is : ' + this.winner());
+          console.log(this.winner());
         } else {
           this.position[i].pos += Dice.roll(6)
+          if (this.position[i] > 30) {
+            this.gameOver = 1
+            console.log(this.winner());
+          }
         }
-
       }
-    } else {
-      this.gameOver = 1
     }
   }
 
   isFinished() {
-    // return this.gameOver == 0 ? false : true
-    if (this.gameOver == 0) {
-      for (let i = 0; i < this.position.length; i++) {
-        if (this.position[i].pos >= 30) {
-          this.gameOver = 1
-          console.log('The winner is : ' + this.winner());
-          return true
-        } else {
-          return false
-        }
-      }
-    } else {
-      return true
-    }
+    return this.gameOver == 0 ? false : true
 
   }
 
   winner() {
     if (this.isFinished()) {
+      let queue = []
       let max = 0
       for (let i = 0; i < this.position.length; i++) {
         if (this.position[i].pos >= max) {
+
           max = this.position[i].pos
         }
+        queue.push(this.position[i].pos)
       }
-      return this.whoIs(max)
+      queue.sort(function(a, b){return b-a})
+      return `The winner is ${this.whoIs(queue[0])},
+      second position : ${this.whoIs(queue[1])},
+      third position : ${this.whoIs(queue[2])},
+      forth position : ${this.whoIs(queue[3])},
+      loser :  ${this.whoIs(queue[4])}  `
     } else {
       return `Game still on going now!`
     }
