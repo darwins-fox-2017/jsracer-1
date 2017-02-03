@@ -1,0 +1,23 @@
+for (var i = 0; i < this.playerData.length; i++){
+  this.playerData[i].pos += Dice.roll()
+
+  if (this.playerData[i].pos > this.length){
+    this.playerData[i].pos = this.length-1
+    this.pemenang = this.playerData[i]
+    this.print_line(this.playerData[i].name,this.playerData[i].pos)
+    this.finish = true
+  }
+  else{
+    this.print_line(this.playerData[i].name,this.playerData[i].pos)
+    // this.playerData[i].pos += Dice.roll()
+  }
+}
+  console.log("\n");
+}
+// if(this.playerData[0].win===1){
+//   this.print_line(this.playerData[1].name,this.playerData[1].pos)
+//   this.print_line(this.playerData[2].name,this.playerData[2].pos)
+// }
+// else if(this.playerData[1].win===1){
+//   this.print_line(this.playerData[2].name,this.playerData[2].pos)
+// }
