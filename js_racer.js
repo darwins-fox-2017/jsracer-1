@@ -38,7 +38,7 @@ class JSRacer {
         if(this.players[i].pos >= this.length -1){
           this.finish = true
           this.win    = this.players[i].name
-          this.players[i].pos = this.length -1
+          this.players[i].pos = this.length-1
           this.print_line(this.players[i].name, this.players[i].pos)
         }else {
           this.print_line(this.players[i].name, this.players[i].pos)
