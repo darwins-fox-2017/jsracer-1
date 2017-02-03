@@ -5,7 +5,7 @@ import Dice from "./dice.js"
 class JSRacer {
   constructor(players, length) {
     this.player = players
-    this.playerData =  [{name : "a", pos : 0}, {name :"b", pos :0},{name :"c", pos :0}]
+    this.playerData =  [{name : "a", pos : 0 }, {name :"b", pos :0},{name :"c", pos :0}]
     this.length = length
     this.jalan = 1;
     this.finish = false
@@ -36,41 +36,36 @@ class JSRacer {
   advanced_player(player){
 
     this.print_board()
+    console.log();
 
     while(this.finish === false) {
-
-      for (var i = 0; i < this.playerData.length; i++){
-        let dadu = Dice.roll();
-
-        if (this.playerData[i].pos + dadu >= this.length){
-          this.playerData[i].pos = this.length-1
-          this.pemenang = this.playerData[i]
+      for(var i=0; i<this.playerData.length; i++){
+        let newPost = Dice.roll()
+        this.playerData[i].pos += newPost
+        if (this.playerData[i].pos < this.length - 1) {
+          this.print_line(this.playerData[i].name, this.playerData[i].pos)
+        } else {
+          if (this.finish === false){
+            this.print_line(this.playerData[i].name, this.length-1)
+            this.pemenang = this.playerData[i]
+          } else {
+            this.print_line(this.playerData[i].name, this.playerData[i].pos - (newPost - 1) )
+          }
           this.finish = true
-          break
-        }
-        else{
-          this.print_line(this.playerData[i].name,this.playerData[i].pos)
-          this.playerData[i].pos += Dice.roll()
-        }
         }
 
+      }
+      console.log();
     }
-    for (var i = 0; i < this.playerData.length; i++){
-      this.print_line(this.playerData[i].name,this.playerData[i].pos)
-    }
+    // this.pemenang.name = 'a'
 
-    console.log(this.finished());
-    //proses berhenti disini sampai kondisi finish
+    // console.log(this.finished());
  }
 
  //kondisi selesai finished n winer
   finished() {
-    return "The winner is player " + this.pemenang.name
- }
-
-  winner() {
-
- }
+    console.log("The winner is player " + this.pemenang.name)
+  }
 
 //animasi
   reset_board() {
