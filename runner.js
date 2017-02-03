@@ -11,4 +11,7 @@ function sleep(milliseconds) {
   }
 }
 
-// Your code here...
+var jsracer = new JSRacer(3, 40)
+//sracer.print_board()
+//jsracer.advanced_player(sleep)
+jsracer.advanced_player(sleep)
