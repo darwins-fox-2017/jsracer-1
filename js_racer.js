@@ -58,11 +58,12 @@ class JSRacer {
     console.log(arr.join("|"))
   }
 
-  advanced_player(){
+  advanced_player(timer){
+    this.reset_board()
     this.print_board()
-    console.log("\n");
-
+    timer(1000)
     while(!this.pemenang){
+      this.reset_board()
       // player = pemain
       // playerData =  objekku
       for(let i=0; i<this.pemain; i++){
@@ -82,7 +83,7 @@ class JSRacer {
         }
 
       }
-      console.log("\n");
+      timer(1000)
     }
     this.winner()
   }
@@ -95,11 +96,5 @@ class JSRacer {
   }
 
 }
-let test = new JSRacer(3, 30);
-// test.positions()
-//test.print_board(false)
-// test.print_line()
-//test.print_board()
-test.advanced_player()
 
 export default JSRacer
