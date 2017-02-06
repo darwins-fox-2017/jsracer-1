@@ -26,7 +26,7 @@ class JSRacer {
   positions() {
     // create posisi awal - masukin ke objek
     for(let i = 0; i < this.pemain.length; i++) {
-      this.player_object[this.pemain[i]] = 0
+      //this.player_object2[this.[i].nama] = 0
 
     }
     // console.log(this.player_object)
@@ -34,13 +34,11 @@ class JSRacer {
 
   print_board() {
     
-    for(let i=0; i<this.pemain.length; i++) {
-      //asumsi i = 0
-      //let namaPemain = this.pemain[i]   //pemain[0] -> a
-      // let posisiPemain = this.player_object[namaPemain] //this.player_positions[a] -> 0
-      //this.player_object[namaPemain] = posisiPemain;
-
+    for(let i=0; i<this.pemain; i++) {
+      
       this.print_line(this.player_object2[i].nama, 0) // (nama. posisi)
+      
+       // (nama. posisi)
       
     }
     console.log("\n")
@@ -98,10 +96,10 @@ class JSRacer {
 
 }
 let test = new JSRacer(3, 30);
-//test.positions()
+// test.positions()
 //test.print_board(false)
 // test.print_line()
-test.print_board()
+//test.print_board()
 test.advanced_player()
 
 export default JSRacer
